@@ -190,7 +190,7 @@
             <div id="accordionContainer" class="space-y-3">
                 <div>
                     <button class="accordion-button w-full text-left px-4 py-3 rounded-md font-semibold flex justify-between items-center transition duration-300 ease-in-out">
-                        4.1. Desain Program Kemitraan yang Tak Tertahankan
+                        4.1. Desain Program Kemitraan yang Menarik dan Sustainable
                         <span class="accordion-icon transform transition-transform duration-300">&#9660;</span>
                     </button>
                     <div class="accordion-content hidden p-4 rounded-b-md">
@@ -213,7 +213,7 @@
                             <li><strong>Grup Komunikasi Efektif:</strong> Membuat grup eksklusif di WhatsApp atau Telegram untuk informasi produk, update stok, pengumuman, dan diskusi antar mitra dengan tim Warna Warni.</li>
                             <li><strong>Katalog Produk Digital Menarik:</strong> Menyediakan katalog produk dalam format PDF atau kumpulan gambar berkualitas tinggi yang mudah dibagikan oleh reseller.</li>
                             <li><strong>Sistem Pemesanan Sederhana:</strong> Memulai dengan sistem order manual atau semi-otomatis (misal, melalui formulir online seperti Google Forms yang terhubung ke admin, atau order langsung via admin WhatsApp/Email) untuk meminimalkan kompleksitas awal.</li>
-                            <li><strong>Formulir Pendaftaran Online Mudah:</strong> Menggunakan Google Forms atau platform serupa untuk proses pendaftaran calon reseller yang efisien.</li>
+                            <li><strong>Formulir Pendaftaran Online Mudah:</strong> Menggunakan platform pendaftaran online dan crm sederhana untuk proses pendaftaran calon reseller yang efisien.</li>
                             <li><strong>Proses yang Ramping & Mudah Diikuti:</strong> Menyusun Standard Operating Procedures (SOP) sederhana untuk pendaftaran, pemesanan, pembayaran, dan pengiriman.</li>
                         </ul>
                     </div>
@@ -225,7 +225,7 @@
                     </button>
                     <div class="accordion-content hidden p-4 rounded-b-md">
                         <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5">
-                            <li><strong>Kampanye Meta Ads (Facebook & Instagram Ads) Tertarget:</strong> Fokus pada audiens yang mencari peluang bisnis, penghasilan tambahan, atau memiliki minat pada produk sejenis. Materi iklan akan menekankan kemudahan memulai, potensi keuntungan, dan keunggulan produk "Baru, Bagus, Murah". Iklan diarahkan ke landing page sederhana atau formulir pendaftaran online.</li>
+                            <li><strong>Kampanye Meta Ads (Facebook & Instagram Ads) Tertarget:</strong> Fokus pada audiens yang mencari peluang bisnis, penghasilan tambahan, atau memiliki minat pada produk sejenis. Materi iklan akan menekankan kemudahan memulai, potensi keuntungan, dan keunggulan produk "Baru, Bagus, Murah". Iklan diarahkan ke landing page sederhana dengan konversi tinggi.</li>
                             <li><strong>Pembuatan Landing Page Perekrutan Sederhana:</strong> Halaman web tunggal yang menjelaskan peluang kemitraan secara ringkas dan persuasif, dengan CTA yang jelas untuk mendaftar.</li>
                             <li><strong>Pemasaran Konten Organik di Media Sosial Brand:</strong> Mengumumkan program kemitraan, membagikan testimoni (jika sudah ada dari pengguna produk), dan menyoroti manfaat bergabung.</li>
                             <li><strong>Program Referral "Getok Tular":</strong> Memberikan insentif menarik bagi siapa saja (termasuk pelanggan awal) yang berhasil mereferensikan calon reseller berkualitas.</li>
@@ -286,7 +286,7 @@
                     <p class="text-sm text-stone-600">Reseller adalah garda terdepan yang berinteraksi langsung dengan konsumen. Feedback mereka mengenai produk, tren, dan kebutuhan pasar menjadi masukan vital untuk inovasi dan pengembangan produk Warna Warni.</p>
                 </div>
                 <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
-                    <h3 class="font-semibold text-lg text-rose-700 mb-1">� Peningkatan Loyalitas Pelanggan</h3>
+                    <h3 class="font-semibold text-lg text-rose-700 mb-1">💖 Peningkatan Loyalitas Pelanggan</h3>
                     <p class="text-sm text-stone-600">Sentuhan personal dan layanan yang diberikan oleh reseller dapat membangun hubungan yang lebih kuat dengan pelanggan, meningkatkan loyalitas jangka panjang terhadap brand Warna Warni.</p>
                 </div>
                 <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
@@ -616,7 +616,10 @@
 
             <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                 <a href="https://wa.me/6281280047473?text=Halo%2C%20saya%20tertarik%20untuk%20menjadwalkan%20pertemuan%20mengenai%20proposal%20Warna%20Warni." id="scheduleMeetingBtn" target="_blank" rel="noopener noreferrer" class="inline-block text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105 w-full sm:w-auto">
-                    Jadwalkan Pertemuan dengan Kami
+                    Jadwalkan Pertemuan
+                </a>
+                <a href="#mockup-landingpage" id="viewMockupBtn" target="_blank" rel="noopener noreferrer" class="inline-block text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105 w-full sm:w-auto">
+                    Lihat Mock-up Landing Page
                 </a>
             </div>
         </div>
@@ -636,9 +639,14 @@
             const ctaButtons = document.querySelectorAll('.cta-button');
             const accordionButtons = document.querySelectorAll('.accordion-button');
             const scheduleMeetingBtn = document.getElementById('scheduleMeetingBtn');
+            const viewMockupBtn = document.getElementById('viewMockupBtn');
 
             if(scheduleMeetingBtn) {
                 // URL untuk WhatsApp sudah diatur di HTML
+            }
+            if(viewMockupBtn){
+                // Ganti '#' dengan URL mock-up landing page Anda yang sebenarnya
+                viewMockupBtn.href = "#"; // Contoh: "https://www.figma.com/proto/..." atau link ke gambar mock-up
             }
 
 
