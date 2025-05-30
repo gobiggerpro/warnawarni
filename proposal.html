@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Strategi Kemitraan - Warna Warni</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f4; /* stone-100 */
+            color: #44403c; /* stone-700 */
+        }
+        .active-tab {
+            color: #e11d48; /* rose-600 */
+            font-weight: 600;
+            background-color: #fff1f2; /* rose-50 */
+            border-radius: 0.375rem 0.375rem 0 0; /* rounded-t-md */
+        }
+        .inactive-tab {
+            color: #78716c; /* stone-500 */
+        }
+        .inactive-tab:hover {
+            color: #c2410c; /* rose-700 */
+            background-color: #fdf2f2; /* rose-50/stone-50 */
+            border-radius: 0.375rem 0.375rem 0 0; /* rounded-t-md */
+        }
+        .tab-content, .accordion-content {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .accordion-button {
+            background-color: #fff1f2; /* rose-50 */
+            color: #be123c; /* rose-700 */
+            border: 1px solid #fecdd3; /* rose-200 */
+        }
+        .accordion-button:hover {
+            background-color: #ffe4e6; /* rose-100 */
+        }
+        .accordion-button.open {
+            background-color: #fecdd3; /* rose-200 */
+            color: #881337; /* rose-900 */
+        }
+        .accordion-button.open .accordion-icon {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            background-color: #ffffff;
+            border: 1px solid #e7e5e4; /* stone-200 */
+            border-top: none;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e7e5e4; /* stone-200 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #fda4af; /* rose-300 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f43f5e; /* rose-500 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-lg py-4 sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center">
+            <div class="flex items-center mb-2 sm:mb-0">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=500,fit=crop,q=95/m6Lwr1DGL8TkVQZZ/warna-warni-logo-Y4LVxqQ2wVSE8qyq.png" alt="Logo Warna Warni" id="brandLogo" class="h-10 mr-4"> 
+            </div>
+            <h1 class="text-xl sm:text-2xl font-bold text-rose-700 text-center sm:text-left sm:ml-4">Strategi Akselerasi Pertumbuhan Brand</h1>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md mb-px sticky top-[76px] sm:top-[88px] z-40">
+        <div class="container mx-auto px-2 sm:px-4 lg:px-6 overflow-x-auto">
+            <ul class="flex whitespace-nowrap border-b border-stone-200">
+                <li><a href="#" class="tab-link active-tab inline-block py-3 px-3 sm:px-4 text-sm font-medium" data-target="#tab1">Pendahuluan</a></li>
+                <li><a href="#" class="tab-link inactive-tab inline-block py-3 px-3 sm:px-4 text-sm font-medium" data-target="#tab2">Analisis Peluang</a></li>
+                <li><a href="#" class="tab-link inactive-tab inline-block py-3 px-3 sm:px-4 text-sm font-medium" data-target="#tab3">Visi Kemitraan</a></li>
+                <li><a href="#" class="tab-link inactive-tab inline-block py-3 px-3 sm:px-4 text-sm font-medium" data-target="#tab4">Usulan Strategi</a></li>
+                <li><a href="#" class="tab-link inactive-tab inline-block py-3 px-3 sm:px-4 text-sm font-medium" data-target="#tab5">Proyeksi Manfaat</a></li>
+                <li><a href="#" class="tab-link inactive-tab inline-block py-3 px-3 sm:px-4 text-sm font-medium" data-target="#tab6">Studi Kasus</a></li>
+                <li><a href="#" class="tab-link inactive-tab inline-block py-3 px-3 sm:px-4 text-sm font-medium" data-target="#tab7">Implementasi</a></li>
+                <li><a href="#" class="tab-link inactive-tab inline-block py-3 px-3 sm:px-4 text-sm font-medium" data-target="#tab8">Investasi</a></li>
+                <li><a href="#" class="tab-link inactive-tab inline-block py-3 px-3 sm:px-4 text-sm font-medium" data-target="#tab9">Tim Kami</a></li>
+                <li><a href="#" class="tab-link inactive-tab inline-block py-3 px-3 sm:px-4 text-sm font-medium" data-target="#tab10">Langkah Lanjut</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <div id="tab1" class="tab-content bg-white p-6 rounded-lg shadow-xl">
+            <p class="mb-6 text-sm text-stone-500 italic">Selamat datang di proposal strategi kami. Tab ini menyajikan pengantar mengenai potensi besar yang dapat dibuka untuk brand Warna Warni melalui pengembangan jaringan reseller yang profesional dan dinamis.</p>
+            <h2 class="text-3xl font-bold text-rose-700 mb-3">Strategi Terobosan: Menggandakan Jangkauan & Penjualan Warna Warni melalui Kekuatan Jaringan Reseller.</h2>
+            <p class="text-lg text-stone-600 mb-6">Sebuah proposal untuk membangun ekosistem kemitraan yang dinamis, menguntungkan, dan berkelanjutan untuk brand Anda.</p>
+            
+            <div class="my-6 p-4 bg-rose-50 rounded-lg border border-rose-200">
+                <p class="text-center text-stone-700 font-medium">Ilustrasi Potensi Pertumbuhan Jaringan & Omzet Awal</p>
+                <div class="chart-container h-[40vh] sm:h-80 md:h-96 max-h-[400px] max-w-2xl mx-auto mt-2 bg-white rounded shadow p-2">
+                     <canvas id="growthPotentialChart"></canvas>
+                </div>
+                 <p class="text-xs text-stone-500 text-center mt-2">Grafik ini adalah ilustrasi potensi pertumbuhan jumlah reseller aktif dan kontribusi omzet kuartalan mereka. Data bersifat hipotetis berdasarkan asumsi pertumbuhan dan produktivitas reseller awal, dengan harga jual rata-rata produk Rp 500.000.</p>
+            </div>
+
+            <p class="text-stone-700 mb-2">Kepada Yth. Bapak/Ibu Pemilik/Manajemen Brand Warna Warni,</p>
+            <p class="text-stone-700 mb-4">Melalui proposal interaktif ini, kami bermaksud menyajikan sebuah strategi komprehensif untuk mengakselerasi pertumbuhan dan jangkauan pasar brand "Warna Warni" Anda secara signifikan melalui pembentukan dan pengembangan jaringan agen dan reseller yang solid, profesional, dan termotivasi. Kami percaya bahwa dengan produk "Baru, Bagus, Murah" yang dimiliki Warna Warni, ditambah dengan strategi kemitraan yang tepat, potensi pasar yang belum tergarap dapat dimaksimalkan, membawa brand Anda ke level berikutnya.</p>
+            
+            <h3 class="text-xl font-semibold text-rose-600 mb-3 mt-6">Ringkasan Eksekutif Proposal:</h3>
+            <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5 mb-6">
+                <li>Identifikasi peluang pasar yang signifikan melalui model kemitraan reseller, terutama dengan popularitas social commerce di Indonesia.</li>
+                <li>Usulan strategi yang terfokus pada rekrutmen awal yang efektif, desain program kemitraan yang menarik, dan pemanfaatan alat pendukung sederhana.</li>
+                <li>Proyeksi manfaat konkret bagi pertumbuhan brand, peningkatan penjualan, dan perluasan jangkauan pasar dengan investasi awal yang terukur.</li>
+            </ul>
+            <button class="cta-button bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105" data-target="#tab2">Pelajari Peluangnya Lebih Lanjut &rarr;</button>
+        </div>
+
+        <div id="tab2" class="tab-content hidden bg-white p-6 rounded-lg shadow-xl">
+            <p class="mb-6 text-sm text-stone-500 italic">Tab ini menggali lebih dalam mengenai lanskap pasar saat ini dan mengapa model bisnis reseller merupakan kunci strategis untuk pertumbuhan eksponensial brand Warna Warni di era digital.</p>
+            <h2 class="text-3xl font-bold text-rose-700 mb-6">Memahami Lanskap Pasar: Peran Vital Jaringan Reseller dalam Era Digital.</h2>
+            
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Potensi Pasar Produk Warna Warni & Tren Reseller di Indonesia</h3>
+            <p class="text-stone-700 mb-4">Produk "Warna Warni" dengan tagline "Baru, Bagus, Murah" sangat selaras dengan permintaan pasar Indonesia yang sensitif terhadap harga namun tetap mengutamakan kualitas dan inovasi. Pasar e-commerce dan khususnya *social commerce* di Indonesia menunjukkan pertumbuhan yang eksplosif. Model reseller menjadi sangat relevan karena memanfaatkan jaringan personal dan kepercayaan, yang merupakan faktor kunci dalam keputusan pembelian di platform sosial. Banyak individu, mulai dari ibu rumah tangga hingga mahasiswa, aktif mencari peluang penghasilan tambahan dengan modal minim dan fleksibilitas tinggi, menjadikan mereka target ideal untuk program reseller Warna Warni.</p>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Kekuatan Model Bisnis Reseller/Agen</h3>
+            <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5 mb-4">
+                <li><strong>Peningkatan Jangkauan Pasar Eksponensial:</strong> Setiap reseller adalah 'cabang' baru yang menjangkau jaringan unik mereka dengan biaya akuisisi pelanggan yang relatif rendah.</li>
+                <li><strong>Pemasaran Word-of-Mouth Otentik:</strong> Rekomendasi dari reseller yang dipercaya seringkali lebih efektif daripada iklan tradisional.</li>
+                <li><strong>Fleksibilitas & Skalabilitas Operasional:</strong> Model ini memungkinkan brand untuk berkembang cepat tanpa investasi besar pada infrastruktur fisik di banyak lokasi.</li>
+                <li><strong>Pengurangan Beban Pemasaran Langsung:</strong> Sebagian besar upaya pemasaran di tingkat akar rumput dilakukan oleh para reseller.</li>
+            </ul>
+            
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Peluang Spesifik untuk Warna Warni</h3>
+            <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5 mb-4">
+                <li>Karakteristik produk Warna Warni (unik, berkualitas, harga terjangkau) sangat ideal untuk dijual melalui sistem reseller yang mengutamakan rekomendasi personal dan demonstrasi produk.</li>
+                <li>Identifikasi segmen calon reseller potensial: Ibu rumah tangga, mahasiswa, karyawan yang ingin bisnis sampingan, komunitas arisan, pegiat media sosial dengan pengikut loyal, dll.</li>
+                 <li>Potensi penetrasi ke daerah-daerah yang mungkin belum terjangkau oleh kanal penjualan utama brand.</li>
+            </ul>
+            <button class="cta-button bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300" data-target="#tab3">Lihat Visi Kemitraan Kami &rarr;</button>
+        </div>
+
+        <div id="tab3" class="tab-content hidden bg-white p-6 rounded-lg shadow-xl">
+            <p class="mb-6 text-sm text-stone-500 italic">Kami percaya pada kemitraan yang kuat dan saling menguntungkan. Tab ini menjelaskan visi kami untuk membangun ekosistem sukses bersama antara Brand Warna Warni dan para mitranya, berdasarkan prinsip transparansi dan dukungan berkelanjutan.</p>
+            <h2 class="text-3xl font-bold text-rose-700 mb-6">Visi Kami: Menciptakan Kemitraan Strategis yang Memberdayakan Brand Warna Warni dan Para Mitranya.</h2>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Tujuan Jangka Panjang Program Kemitraan</h3>
+            <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5 mb-4">
+                <li>Meningkatkan volume penjualan dan pangsa pasar Warna Warni secara signifikan dan berkelanjutan.</li>
+                <li>Membangun loyalitas brand yang kuat melalui komunitas mitra yang terlibat dan termotivasi.</li>
+                <li>Menjadikan Warna Warni sebagai peluang bisnis pilihan yang menarik dan menguntungkan bagi masyarakat luas.</li>
+                <li>Menciptakan dampak sosial positif dengan memberdayakan individu untuk mencapai kemandirian finansial.</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Prinsip Kemitraan yang Kami Usulkan</h3>
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200"><strong class="text-rose-700">Saling Menguntungkan (Win-Win Solution):</strong> Struktur yang adil bagi brand dan mitra.</div>
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200"><strong class="text-rose-700">Transparansi dan Kepercayaan:</strong> Komunikasi terbuka dan sistem yang jelas.</div>
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200"><strong class="text-rose-700">Dukungan Berkelanjutan:</strong> Pelatihan, materi, dan bantuan teknis berkelanjutan.</div>
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200"><strong class="text-rose-700">Inovasi Bersama:</strong> Terbuka terhadap masukan mitra untuk pengembangan produk dan program.</div>
+            </div>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Gambaran Ekosistem Ideal Kemitraan Warna Warni</h3>
+            <p class="text-stone-700 mb-4">Bayangkan sebuah ekosistem di mana Brand Warna Warni menyediakan produk inovatif dan dukungan strategis. Agen dan Reseller, sebagai mitra kunci, termotivasi untuk memasarkan produk ke jaringan mereka. Konsumen akhir mendapatkan produk berkualitas dengan pelayanan personal. Siklus ini menciptakan pertumbuhan organik, loyalitas, dan keuntungan bagi semua pihak yang terlibat. Feedback dari pasar melalui reseller juga menjadi input berharga untuk inovasi produk selanjutnya.</p>
+            <div class="my-4 p-4 bg-stone-50 rounded-lg border border-stone-200 text-center">
+                <p class="text-stone-600 font-medium">Diagram Ekosistem Kemitraan (Placeholder)</p>
+                <img src="https://placehold.co/700x350/F5F5F4/44403C?text=Brand+%E2%86%94+Agen/Reseller+%E2%86%94+Konsumen" alt="Diagram Ekosistem Kemitraan" class="w-full max-w-lg mx-auto mt-2 rounded">
+            </div>
+            <button class="cta-button bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300" data-target="#tab4">Masuk ke Usulan Strategi Inti &rarr;</button>
+        </div>
+        
+        <div id="tab4" class="tab-content hidden bg-white p-6 rounded-lg shadow-xl">
+            <p class="mb-6 text-sm text-stone-500 italic">Ini adalah inti dari proposal kami. Tab ini menguraikan pilar-pilar strategi komprehensif yang dirancang untuk membangun dan mengembangkan jaringan reseller Warna Warni yang kuat dan produktif, dengan fokus pada rekrutmen awal yang efektif.</p>
+            <h2 class="text-3xl font-bold text-rose-700 mb-6">Strategi Komprehensif Kami: Langkah Demi Langkah Membangun Mesin Pertumbuhan Reseller Warna Warni.</h2>
+            <div id="accordionContainer" class="space-y-3">
+                <div>
+                    <button class="accordion-button w-full text-left px-4 py-3 rounded-md font-semibold flex justify-between items-center transition duration-300 ease-in-out">
+                        4.1. Desain Program Kemitraan yang Tak Tertahankan
+                        <span class="accordion-icon transform transition-transform duration-300">&#9660;</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 rounded-b-md">
+                        <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5">
+                            <li>Menyusun struktur tingkatan mitra awal yang sederhana namun menarik (misal: Reseller & Agen) dengan kriteria pendaftaran yang jelas, hak dan kewajiban yang seimbang, serta skema komisi/diskon yang kompetitif dan progresif.</li>
+                            <li>Merancang paket pendaftaran atau investasi awal yang terjangkau dan memberikan nilai lebih (misal: produk sampel pilihan, katalog digital, akses ke materi pemasaran dasar).</li>
+                            <li>Mengembangkan program reward dan insentif awal yang mudah dipahami dan memotivasi (misal: bonus untuk pencapaian penjualan pertama, bonus untuk referral mitra baru).</li>
+                            <li>Menyusun *Value Proposition* yang kuat dan jelas: "Mengapa menjadi reseller Warna Warni adalah peluang terbaik saat ini?"</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-button w-full text-left px-4 py-3 rounded-md font-semibold flex justify-between items-center transition duration-300 ease-in-out">
+                        4.2. Sistem Pendukung Awal & Alat Bantu Esensial
+                        <span class="accordion-icon transform transition-transform duration-300">&#9660;</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 rounded-b-md">
+                        <p class="text-stone-700 font-semibold mb-2">Fokus pada pemanfaatan alat yang ada dan berbiaya rendah untuk manajemen awal:</p>
+                        <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5">
+                            <li><strong>Grup Komunikasi Efektif:</strong> Membuat grup eksklusif di WhatsApp atau Telegram untuk informasi produk, update stok, pengumuman, dan diskusi antar mitra dengan tim Warna Warni.</li>
+                            <li><strong>Katalog Produk Digital Menarik:</strong> Menyediakan katalog produk dalam format PDF atau kumpulan gambar berkualitas tinggi yang mudah dibagikan oleh reseller.</li>
+                            <li><strong>Sistem Pemesanan Sederhana:</strong> Memulai dengan sistem order manual atau semi-otomatis (misal, melalui formulir online seperti Google Forms yang terhubung ke admin, atau order langsung via admin WhatsApp/Email) untuk meminimalkan kompleksitas awal.</li>
+                            <li><strong>Formulir Pendaftaran Online Mudah:</strong> Menggunakan Google Forms atau platform serupa untuk proses pendaftaran calon reseller yang efisien.</li>
+                            <li><strong>Proses yang Ramping & Mudah Diikuti:</strong> Menyusun Standard Operating Procedures (SOP) sederhana untuk pendaftaran, pemesanan, pembayaran, dan pengiriman.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-button w-full text-left px-4 py-3 rounded-md font-semibold flex justify-between items-center transition duration-300 ease-in-out">
+                        4.3. Strategi Akuisisi & Perekrutan Mitra yang Efektif
+                        <span class="accordion-icon transform transition-transform duration-300">&#9660;</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 rounded-b-md">
+                        <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5">
+                            <li><strong>Kampanye Meta Ads (Facebook & Instagram Ads) Tertarget:</strong> Fokus pada audiens yang mencari peluang bisnis, penghasilan tambahan, atau memiliki minat pada produk sejenis. Materi iklan akan menekankan kemudahan memulai, potensi keuntungan, dan keunggulan produk "Baru, Bagus, Murah". Iklan diarahkan ke landing page sederhana atau formulir pendaftaran online.</li>
+                            <li><strong>Pembuatan Landing Page Perekrutan Sederhana:</strong> Halaman web tunggal yang menjelaskan peluang kemitraan secara ringkas dan persuasif, dengan CTA yang jelas untuk mendaftar.</li>
+                            <li><strong>Pemasaran Konten Organik di Media Sosial Brand:</strong> Mengumumkan program kemitraan, membagikan testimoni (jika sudah ada dari pengguna produk), dan menyoroti manfaat bergabung.</li>
+                            <li><strong>Program Referral "Getok Tular":</strong> Memberikan insentif menarik bagi siapa saja (termasuk pelanggan awal) yang berhasil mereferensikan calon reseller berkualitas.</li>
+                            <li><strong>Kolaborasi Awal dengan Komunitas Lokal atau Mikro-Influencer:</strong> Menjangkau jaringan yang sudah ada dengan biaya lebih terjangkau.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-button w-full text-left px-4 py-3 rounded-md font-semibold flex justify-between items-center transition duration-300 ease-in-out">
+                        4.4. Program Pelatihan & Onboarding Dasar
+                        <span class="accordion-icon transform transition-transform duration-300">&#9660;</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 rounded-b-md">
+                        <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5">
+                            <li><strong>Modul Onboarding Selamat Datang:</strong> Panduan ringkas tentang brand Warna Warni, etika berjualan, dan alur kerja dasar sebagai reseller.</li>
+                            <li><strong>Pelatihan Produk Esensial (Product Knowledge):</strong> Informasi kunci mengenai produk-produk unggulan, keunikannya, dan target pasarnya, disampaikan melalui materi digital (PDF, video singkat).</li>
+                            <li><strong>Teknik Dasar Penjualan Online:</strong> Tips sederhana cara promosi di media sosial pribadi, WhatsApp, dan cara melayani calon pembeli.</li>
+                            <li><strong>Panduan Penggunaan Alat Bantu:</strong> Cara mengakses katalog, melakukan pemesanan, dan berkomunikasi dengan tim support Warna Warni.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-button w-full text-left px-4 py-3 rounded-md font-semibold flex justify-between items-center transition duration-300 ease-in-out">
+                        4.5. Aktivasi Awal & Dukungan Pemasaran Dasar
+                        <span class="accordion-icon transform transition-transform duration-300">&#9660;</span>
+                    </button>
+                    <div class="accordion-content hidden p-4 rounded-b-md">
+                        <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5">
+                            <li>Penyediaan materi promosi dasar yang mudah digunakan: foto produk berkualitas, beberapa contoh caption sederhana untuk media sosial.</li>
+                            <li>Mendorong reseller untuk mulai memasarkan ke jaringan terdekat mereka (teman, keluarga, kolega).</li>
+                            <li>Menyediakan admin atau kontak person yang responsif untuk menjawab pertanyaan reseller.</li>
+                            <li>Mengumpulkan feedback awal dari reseller untuk perbaikan program.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button class="cta-button mt-6 bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300" data-target="#tab5">Lihat Proyeksi Manfaatnya &rarr;</button>
+        </div>
+
+        <div id="tab5" class="tab-content hidden bg-white p-6 rounded-lg shadow-xl">
+            <p class="mb-6 text-sm text-stone-500 italic">Implementasi strategi ini bukan hanya tentang membangun jaringan, tetapi tentang menciptakan nilai tambah signifikan bagi Brand Warna Warni. Tab ini memproyeksikan berbagai manfaat positif yang dapat Anda harapkan.</p>
+            <h2 class="text-3xl font-bold text-rose-700 mb-6">Investasi Cerdas: Dampak Positif Implementasi Strategi Reseller bagi Brand Warna Warni.</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
+                    <h3 class="font-semibold text-lg text-rose-700 mb-1">📈 Peningkatan Penjualan & Pangsa Pasar</h3>
+                    <p class="text-sm text-stone-600">Dengan jaringan reseller yang luas dan termotivasi, volume penjualan produk Warna Warni diproyeksikan meningkat secara signifikan, membuka pangsa pasar baru yang sebelumnya sulit dijangkau.</p>
+                </div>
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
+                    <h3 class="font-semibold text-lg text-rose-700 mb-1">📣 Peningkatan Brand Awareness & Jangkauan</h3>
+                    <p class="text-sm text-stone-600">Setiap reseller bertindak sebagai duta brand, menyebarkan informasi produk dan brand Warna Warni ke jaringan personal mereka, menciptakan efek viral dan meningkatkan kesadaran merek secara organik.</p>
+                </div>
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
+                    <h3 class="font-semibold text-lg text-rose-700 mb-1">💰 Efisiensi Biaya Pemasaran & Akuisisi</h3>
+                    <p class="text-sm text-stone-600">Model reseller mengurangi ketergantungan pada biaya iklan konvensional yang mahal. Akuisisi pelanggan melalui reseller cenderung lebih hemat biaya dan memiliki konversi lebih tinggi.</p>
+                </div>
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
+                    <h3 class="font-semibold text-lg text-rose-700 mb-1">📝 Pengumpulan Feedback Pasar Berharga</h3>
+                    <p class="text-sm text-stone-600">Reseller adalah garda terdepan yang berinteraksi langsung dengan konsumen. Feedback mereka mengenai produk, tren, dan kebutuhan pasar menjadi masukan vital untuk inovasi dan pengembangan produk Warna Warni.</p>
+                </div>
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
+                    <h3 class="font-semibold text-lg text-rose-700 mb-1">💖 Peningkatan Loyalitas Pelanggan</h3>
+                    <p class="text-sm text-stone-600">Sentuhan personal dan layanan yang diberikan oleh reseller dapat membangun hubungan yang lebih kuat dengan pelanggan, meningkatkan loyalitas jangka panjang terhadap brand Warna Warni.</p>
+                </div>
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
+                    <h3 class="font-semibold text-lg text-rose-700 mb-1">🌍 Penguatan Citra Brand Positif</h3>
+                    <p class="text-sm text-stone-600">Program kemitraan yang memberdayakan dan memberikan peluang bisnis akan membangun citra positif bagi Warna Warni sebagai brand yang peduli dan berkontribusi pada kesejahteraan masyarakat.</p>
+                </div>
+            </div>
+             <div class="mt-8 p-4 bg-stone-50 rounded-lg border border-stone-200">
+                <p class="text-center text-stone-700 font-medium">Ilustrasi Proyeksi Pertumbuhan Omzet Kumulatif Tahunan via Reseller</p>
+                <div class="chart-container h-[40vh] sm:h-80 md:h-96 max-h-[400px] max-w-2xl mx-auto mt-2 bg-white rounded shadow p-2">
+                    <canvas id="salesProjectionChart"></canvas>
+                </div>
+                <p class="text-xs text-stone-500 text-center mt-2">Grafik ini adalah ilustrasi potensi pertumbuhan omzet tahunan kumulatif yang dikontribusikan oleh jaringan reseller. Data bersifat hipotetis berdasarkan asumsi pertumbuhan reseller dan produktivitas penjualan rata-rata Rp 500.000/pcs.</p>
+            </div>
+            <button class="cta-button mt-6 bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300" data-target="#tab6">Lihat Studi Kasus & Pembelajaran &rarr;</button>
+        </div>
+
+        <div id="tab6" class="tab-content hidden bg-white p-6 rounded-lg shadow-xl">
+            <p class="mb-6 text-sm text-stone-500 italic">Strategi yang kami usulkan didasarkan pada pengalaman dan pembelajaran dari praktik terbaik di industri. Tab ini menyoroti adaptasi dari kesuksesan sebelumnya untuk konteks unik Brand Warna Warni.</p>
+            <h2 class="text-3xl font-bold text-rose-700 mb-6">Belajar dari Kesuksesan: Mengadaptasi Strategi Teruji untuk Konteks Warna Warni.</h2>
+            
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Analisis Keberhasilan Strategi Reseller pada EmasMini & Salam Gold (Pengalaman Terdahulu Anda)</h3>
+            <p class="text-stone-700 mb-4">Berdasarkan pengalaman Anda yang sukses dalam membangun jaringan reseller untuk EmasMini dan Salam Gold, beberapa poin kunci keberhasilan yang dapat kita petik dan adaptasi meliputi:</p>
+            <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5 mb-4">
+                <li><strong>Penawaran Peluang Usaha yang Menarik & Jelas:</strong> Komunikasi nilai yang kuat kepada calon reseller mengenai potensi penghasilan dan kemudahan memulai.</li>
+                <li><strong>Penggunaan Meta Ads yang Efektif:</strong> Targeting yang presisi dan materi iklan yang persuasif untuk menjangkau calon reseller berkualitas.</li>
+                <li><strong>Landing Page Konversi Tinggi:</strong> Halaman pendaftaran yang informatif, mudah digunakan, dan mendorong tindakan.</li>
+                <li><strong>Sistem Pendaftaran Berbayar (sebagai Filter & Komitmen):</strong> Memastikan keseriusan calon mitra dan bisa dialokasikan untuk starter kit atau fasilitas awal.</li>
+                <li><strong>Dukungan dan Komunitas yang Solid:</strong> Memberikan pelatihan, materi pemasaran, dan membangun rasa kebersamaan antar mitra.</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Studi Kasus Inspiratif: Ethica Group (Fashion Muslim)</h3>
+            <p class="text-stone-700 mb-4">Ethica Group, dengan brand-brand fashion muslimnya, telah berhasil membangun jaringan kemitraan yang luas dan produktif di Indonesia. Beberapa faktor kunci keberhasilan mereka yang relevan untuk Warna Warni meliputi:</p>
+            <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5 mb-4">
+                <li><strong>Produk Berkualitas & Sesuai Tren Pasar:</strong> Konsistensi dalam menghadirkan model baru yang diminati dan menjaga standar kualitas produk.</li>
+                <li><strong>Sistem Kemitraan Bertingkat yang Jelas:</strong> Memberikan jalur karir dan insentif yang lebih besar bagi mitra yang berprestasi (misalnya Agen, Sub-Agen).</li>
+                <li><strong>Dukungan Pemasaran Komprehensif:</strong> Penyediaan katalog reguler, materi promosi digital dan cetak, serta kampanye brand yang mendukung penjualan mitra.</li>
+                <li><strong>Pembangunan Komunitas Mitra yang Kuat:</strong> Mengadakan pertemuan, program apresiasi, dan membangun hubungan personal dengan para mitra.</li>
+                <li><strong>Pembinaan dan Pelatihan Berkelanjutan:</strong> Memberikan product knowledge mendalam dan meningkatkan keterampilan penjualan mitra.</li>
+                <li><strong>Brand Image yang Positif dan Terpercaya:</strong> Membangun citra brand yang kuat di segmen pasarnya.</li>
+            </ul>
+            <p class="text-stone-700 mb-4">Pembelajaran dari Ethica Group menunjukkan bahwa kombinasi produk yang tepat, sistem kemitraan yang adil, dan dukungan berkelanjutan adalah fondasi penting untuk kesuksesan jaringan reseller.</p>
+
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Adaptasi Pembelajaran untuk Brand Warna Warni</h3>
+            <p class="text-stone-700 mb-4">Untuk Brand Warna Warni, strategi tersebut akan kami adaptasi dan tingkatkan dengan mempertimbangkan:</p>
+            <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5 mb-4">
+                <li><strong>Karakteristik Produk "Baru, Bagus, Murah":</strong> Menjadikan ini sebagai selling point utama dalam materi perekrutan dan pelatihan reseller. Produk yang menarik akan lebih mudah dijual.</li>
+                <li><strong>Target Pasar Warna Warni yang Spesifik:</strong> Menyesuaikan bahasa komunikasi dan channel pemasaran untuk menjangkau segmen yang paling relevan dengan produk Warna Warni.</li>
+                <li><strong>Pemanfaatan Platform Digital yang Lebih Luas:</strong> Selain Meta Ads, mengeksplorasi potensi TikTok, kemitraan dengan influencer mikro yang sesuai dengan brand image Warna Warni.</li>
+                <li><strong>Inovasi Program Kemitraan:</strong> Mungkin dengan gamifikasi, tingkatan reward yang lebih variatif, atau program edukasi berkelanjutan yang lebih mendalam bagi para mitra.</li>
+                <li><strong>Fokus pada Storytelling Produk:</strong> Melatih reseller untuk tidak hanya menjual, tetapi juga menceritakan nilai dan keunikan setiap produk Warna Warni.</li>
+            </ul>
+            <button class="cta-button bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300" data-target="#tab7">Lanjut ke Rencana Implementasi &rarr;</button>
+        </div>
+
+        <div id="tab7" class="tab-content hidden bg-white p-6 rounded-lg shadow-xl">
+            <p class="mb-6 text-sm text-stone-500 italic">Sebuah strategi yang baik memerlukan rencana implementasi yang jelas. Tab ini menyajikan roadmap tahapan implementasi strategi pengembangan reseller, dari perencanaan hingga pengembangan berkelanjutan.</p>
+            <h2 class="text-3xl font-bold text-rose-700 mb-6">Dari Konsep Menuju Kenyataan: Tahapan Implementasi Strategi Pengembangan Reseller.</h2>
+            <p class="text-stone-700 mb-6">Kami mengusulkan pendekatan implementasi yang terstruktur dan bertahap, dengan fokus pada pencapaian hasil yang cepat di tahap awal dan pertumbuhan berkelanjutan di masa depan.</p>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-stone-200">
+                    <thead class="bg-rose-50">
+                        <tr>
+                            <th class="py-2 px-4 border-b border-stone-200 text-left text-sm font-semibold text-rose-700">Fase</th>
+                            <th class="py-2 px-4 border-b border-stone-200 text-left text-sm font-semibold text-rose-700">Aktivitas Utama</th>
+                            <th class="py-2 px-4 border-b border-stone-200 text-left text-sm font-semibold text-rose-700">Estimasi Durasi</th>
+                            <th class="py-2 px-4 border-b border-stone-200 text-left text-sm font-semibold text-rose-700">Output Kunci</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-stone-700 text-sm">
+                        <tr>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top"><strong>Fase 1: Fondasi & Perencanaan Program</strong></td>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top">
+                                <ul class="list-disc pl-5">
+                                    <li>Finalisasi detail program kemitraan (struktur, komisi, syarat & ketentuan).</li>
+                                    <li>Penyusunan Value Proposition & materi inti perekrutan reseller.</li>
+                                    <li>Pembuatan katalog produk digital & materi pemasaran dasar.</li>
+                                    <li>Penyiapan formulir pendaftaran online sederhana (misal: Google Form).</li>
+                                    <li>Penentuan KPI awal program.</li>
+                                </ul>
+                            </td>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top">Bulan 1</td>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top">Dokumen program kemitraan, materi pemasaran awal, sistem pendaftaran siap.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top"><strong>Fase 2: Peluncuran Awal & Perekrutan Gelombang Pertama</strong></td>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top">
+                                <ul class="list-disc pl-5">
+                                    <li>Peluncuran program kemitraan secara internal/terbatas.</li>
+                                    <li>Pelaksanaan kampanye Meta Ads perdana untuk akuisisi reseller.</li>
+                                    <li>Proses pendaftaran dan seleksi calon reseller.</li>
+                                    <li>Onboarding & pelatihan dasar gelombang pertama mitra.</li>
+                                    <li>Pembentukan grup komunikasi reseller.</li>
+                                </ul>
+                            </td>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top">Bulan 2-3</td>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top">Basis reseller awal terbentuk, feedback awal terkumpul, proses berjalan.</td>
+                        </tr>
+                         <tr>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top"><strong>Fase 3: Aktivasi, Evaluasi & Optimasi Awal</strong></td>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top">
+                                <ul class="list-disc pl-5">
+                                    <li>Monitoring aktivitas penjualan reseller awal.</li>
+                                    <li>Pengumpulan feedback intensif dari reseller dan pasar.</li>
+                                    <li>Analisis kinerja kampanye Meta Ads dan strategi perekrutan.</li>
+                                    <li>Optimasi materi pemasaran, proses onboarding, dan sistem dukungan berdasarkan data.</li>
+                                    <li>Peningkatan skala kampanye perekrutan secara bertahap.</li>
+                                </ul>
+                            </td>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top">Bulan 4-6</td>
+                            <td class="py-2 px-4 border-b border-stone-200 align-top">Peningkatan jumlah reseller aktif, optimasi strategi, peningkatan penjualan awal.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b-0 align-top"><strong>Fase 4: Pengembangan Berkelanjutan & Inovasi</strong></td>
+                            <td class="py-2 px-4 border-b-0 align-top">
+                                <ul class="list-disc pl-5">
+                                    <li>Pengembangan program pelatihan lanjutan.</li>
+                                    <li>Implementasi program reward & loyalitas yang lebih komprehensif.</li>
+                                    <li>Diversifikasi channel akuisisi mitra baru.</li>
+                                    <li>Pertimbangan pengembangan platform reseller kustom yang lebih canggih (berdasarkan evaluasi Fase 3 dan kebutuhan).</li>
+                                    <li>Inovasi produk dan strategi pemasaran berdasarkan tren pasar dan masukan mitra.</li>
+                                </ul>
+                            </td>
+                            <td class="py-2 px-4 border-b-0 align-top">Bulan 7 dst.</td>
+                            <td class="py-2 px-4 border-b-0 align-top">Jaringan reseller yang matang dan produktif, pertumbuhan berkelanjutan, brand yang semakin kuat.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-stone-500 text-center mt-4">Timeline ini bersifat estimasi dan dapat disesuaikan lebih lanjut berdasarkan diskusi dan kesepakatan bersama.</p>
+            <button class="cta-button mt-6 bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300" data-target="#tab8">Lanjut ke Kebutuhan Investasi &rarr;</button>
+        </div>
+
+        <div id="tab8" class="tab-content hidden bg-white p-6 rounded-lg shadow-xl">
+            <p class="mb-6 text-sm text-stone-500 italic">Setiap strategi memerlukan dukungan sumber daya. Tab ini menguraikan estimasi kebutuhan investasi dari pihak Warna Warni dan model kerjasama yang kami tawarkan untuk mewujudkan visi ini.</p>
+            <h2 class="text-3xl font-bold text-rose-700 mb-6">Investasi Strategis untuk Pertumbuhan Eksponensial.</h2>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Rincian Estimasi Kebutuhan Investasi Awal dari Pihak Warna Warni (Fokus Rekrutmen):</h3>
+            <p class="text-stone-700 mb-4">Investasi awal ini difokuskan untuk membangun fondasi program rekrutmen reseller yang efektif dan efisien:</p>
+            <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5 mb-4">
+                <li><strong>Desain & Pembuatan Materi Perekrutan Profesional:</strong> Termasuk landing page sederhana, materi presentasi peluang bisnis, konten iklan Meta Ads (gambar/video pendek), dan copywriting. (Estimasi: [Sebutkan angka atau range])</li>
+                <li><strong>Budget Awal Kampanye Meta Ads:</strong> Untuk menjalankan kampanye akuisisi reseller gelombang pertama selama 1-2 bulan. (Estimasi: [Sebutkan angka atau range])</li>
+                <li><strong>Pembuatan Materi Pemasaran Dasar untuk Reseller:</strong> Katalog produk digital, template promosi sederhana. (Estimasi: [Sebutkan angka atau range])</li>
+                <li><strong>Biaya Setup Alat Bantu Awal:</strong> Jika menggunakan tools berbayar untuk formulir online atau manajemen grup (opsional, bisa dimulai dengan gratis). (Estimasi: [Sebutkan angka atau range])</li>
+            </ul>
+            <p class="text-sm text-stone-500 mb-4">*) Detail angka akan kami presentasikan dan diskusikan lebih lanjut berdasarkan lingkup kerja yang disepakati. Pengembangan platform kustom dipertimbangkan sebagai investasi di fase lanjutan.</p>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Model Kerjasama yang Kami Tawarkan (Sebagai Konsultan/Agensi):</h3>
+            <p class="text-stone-700 mb-4">Kami menawarkan beberapa model kerjasama yang fleksibel, disesuaikan dengan kebutuhan dan preferensi Brand Warna Warni:</p>
+            <ul class="list-disc list-inside space-y-2 text-stone-700 pl-5 mb-4">
+                <li><strong>Jasa Konsultasi & Perancangan Strategi Rekrutmen:</strong> Kami membantu merancang program kemitraan awal, strategi akuisisi, dan memberikan panduan implementasi.</li>
+                <li><strong>Manajemen Kampanye Akuisisi Reseller:</strong> Kami menjalankan dan mengoptimalkan kampanye Meta Ads serta channel akuisisi lainnya untuk Anda.</li>
+                <li><strong>Paket Implementasi Tahap Awal:</strong> Meliputi perancangan program, pembuatan materi, setup alat bantu, dan manajemen kampanye akuisisi awal.</li>
+                <li><strong>Model Retainer Bulanan:</strong> Untuk dukungan berkelanjutan dalam optimasi strategi rekrutmen, analisis data, dan konsultasi pengembangan program.</li>
+            </ul>
+            <p class="text-stone-700 mb-2">Rincian biaya jasa kami akan disajikan dalam proposal komersial terpisah setelah diskusi lebih lanjut mengenai lingkup dan model kerjasama yang dipilih.</p>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Proyeksi Return on Investment (ROI)</h3>
+            <p class="text-stone-700 mb-4">Dengan fokus pada rekrutmen reseller yang efektif di tahap awal, ROI dapat diukur dari jumlah reseller berkualitas yang berhasil direkrut, potensi penjualan awal dari jaringan tersebut, dan peningkatan brand awareness dengan biaya yang terkontrol. Kalkulasi ROI detail dapat kami siapkan berdasarkan target rekrutmen dan proyeksi kontribusi reseller.</p>
+            <button class="cta-button bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300" data-target="#tab9">Kenali Tim Kami Lebih Dekat &rarr;</button>
+        </div>
+
+        <div id="tab9" class="tab-content hidden bg-white p-6 rounded-lg shadow-xl">
+            <p class="mb-6 text-sm text-stone-500 italic">Kenali tim di balik proposal strategi ini. Kami adalah para profesional dengan pengalaman dan dedikasi untuk membantu brand Anda mencapai potensi penuhnya melalui jaringan kemitraan yang kuat.</p>
+            <h2 class="text-3xl font-bold text-rose-700 mb-6">Partner Terpercaya Anda dalam Membangun Jaringan Reseller yang Sukses.</h2>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Profil Singkat Tim/Perusahaan Kami</h3>
+            <p class="text-stone-700 mb-4">GoBigger.pro adalah agensi pemasaran digital / konsultan pengembangan bisnis yang berfokus pada strategi pertumbuhan inovatif. Kami memiliki keahlian dalam pengembangan program reseller, strategi akuisisi digital, pemasaran konten, analisis data.</p>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Portofolio & Pengalaman Relevan</h3>
+            <p class="text-stone-700 mb-4">Kami bangga telah membantu berbagai brand mencapai kesuksesan, termasuk pengalaman signifikan dalam merancang dan menjalankan strategi akuisisi serta membangun jaringan kemitraan untuk brand seperti EmasMini dan Salam Gold. Kami juga telah mempelajari model kesuksesan brand seperti Ethica Group dalam membangun jaringan kemitraan yang solid di Indonesia.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">
+                <div class="p-3 bg-stone-100 rounded text-center text-sm text-stone-600">Pengalaman dengan EmasMini</div>
+                <div class="p-3 bg-stone-100 rounded text-center text-sm text-stone-600">Pengalaman dengan Salam Gold</div>
+                <div class="p-3 bg-stone-100 rounded text-center text-sm text-stone-600">Studi Kasus: Ethica Group</div>
+            </div>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Komitmen Kami terhadap Kesuksesan Warna Warni</h3>
+            <p class="text-stone-700 mb-4">Kami tidak hanya menawarkan jasa, tetapi kemitraan strategis. Kami berkomitmen untuk bekerja sama erat dengan tim Warna Warni, memahami kebutuhan unik Anda, dan memberikan solusi yang paling optimal untuk mencapai tujuan bisnis Anda. Kesuksesan Warna Warni adalah prioritas utama kami.</p>
+            <button class="cta-button bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300" data-target="#tab10">Langkah Selanjutnya &rarr;</button>
+        </div>
+
+        <div id="tab10" class="tab-content hidden bg-white p-6 rounded-lg shadow-xl">
+            <p class="mb-6 text-sm text-stone-500 italic">Kami berharap proposal ini memberikan gambaran yang jelas mengenai potensi kerjasama kita. Tab ini berisi ajakan untuk diskusi lebih lanjut dan informasi kontak kami.</p>
+            <h2 class="text-3xl font-bold text-rose-700 mb-6">Mari Wujudkan Visi Ini Bersama!</h2>
+            
+            <p class="text-stone-700 mb-4">Kami sangat antusias untuk membahas proposal ini secara lebih detail dengan Anda, menjawab setiap pertanyaan, dan menyesuaikan strategi ini agar selaras sempurna dengan visi dan tujuan Brand Warna Warni. Kami percaya bahwa kolaborasi ini akan membawa kesuksesan yang signifikan.</p>
+
+            <h3 class="text-xl font-semibold text-rose-600 mb-2">Informasi Kontak Kami:</h3>
+            <p class="text-stone-700"><strong>Nailunni'am, Lc.</strong></p>
+            <p class="text-stone-700">Email: solusidigital.net@gmail.com</p>
+            <p class="text-stone-700">Telepon/WhatsApp: 0812.8004.7473</p>
+            <p class="text-stone-700 mb-6">Website: GoBigger.pro</p>
+
+            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                <button class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105 w-full sm:w-auto">
+                    Jadwalkan Pertemuan dengan Kami
+                </button>
+                <button class="bg-stone-500 hover:bg-stone-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105 w-full sm:w-auto">
+                    Download Versi PDF Proposal Ini
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-stone-800 text-stone-300 py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; <span id="currentYear"></span> Nailunni'am, Lc. founder of GoBigger.pro. Hak Cipta Dilindungi.</p>
+            <p class="text-sm text-stone-400">Proposal Strategi untuk Akselerasi Pertumbuhan Brand Warna Warni.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const ctaButtons = document.querySelectorAll('.cta-button');
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+
+            function showTab(targetId) {
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                tabs.forEach(t => {
+                    t.classList.remove('active-tab');
+                    t.classList.add('inactive-tab');
+                });
+
+                const targetContent = document.querySelector(targetId);
+                if (targetContent) {
+                    targetContent.classList.remove('hidden');
+                }
+
+                tabs.forEach(t => {
+                    if (t.dataset.target === targetId) {
+                        t.classList.add('active-tab');
+                        t.classList.remove('inactive-tab');
+                    }
+                });
+                
+                const navElement = document.querySelector('nav');
+                if (navElement) {
+                     window.scrollTo({ top: navElement.offsetTop - 10 , behavior: 'smooth' });
+                } else {
+                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const targetId = this.dataset.target;
+                    showTab(targetId);
+                });
+            });
+
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const targetId = this.dataset.target;
+                    showTab(targetId);
+                });
+            });
+
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.accordion-icon');
+
+                    if (content.classList.contains('hidden')) {
+                        content.classList.remove('hidden');
+                        this.classList.add('open');
+                        if(icon) icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        content.classList.add('hidden');
+                        this.classList.remove('open');
+                        if(icon) icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+            
+            const currentYearElement = document.getElementById('currentYear');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+
+            // Chart.js: Growth Potential Chart (Tab 1)
+            const growthCtx = document.getElementById('growthPotentialChart');
+            if (growthCtx) {
+                new Chart(growthCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Kuartal 1', 'Kuartal 2', 'Kuartal 3', 'Kuartal 4', 'Kuartal 5 (Awal T2)'],
+                        datasets: [{
+                            label: 'Jumlah Reseller Aktif (Akhir Kuartal)',
+                            data: [50, 150, 300, 500, 700], // Data hipotetis
+                            backgroundColor: 'rgba(225, 29, 72, 0.6)', // rose-600 with opacity
+                            borderColor: 'rgba(225, 29, 72, 1)', // rose-600
+                            borderWidth: 1,
+                            yAxisID: 'yResellers'
+                        },
+                        {
+                            label: 'Proyeksi Omzet Kuartalan (Juta Rp)',
+                            data: [37.5, 200, 562.5, 1200, 2100], // Data hipotetis (dalam Juta Rp)
+                            backgroundColor: 'rgba(251, 113, 133, 0.6)', // rose-400 with opacity
+                            borderColor: 'rgba(251, 113, 133, 1)', // rose-400
+                            borderWidth: 1,
+                            type: 'line',
+                            tension: 0.1,
+                            yAxisID: 'yOmzet'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            yResellers: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                beginAtZero: true,
+                                title: { display: true, text: 'Jumlah Reseller' }
+                            },
+                            yOmzet: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                beginAtZero: true,
+                                title: { display: true, text: 'Omzet (Juta Rp)' },
+                                grid: {
+                                    drawOnChartArea: false, // only want the grid lines for one axis to show up
+                                },
+                            },
+                            x: {
+                                title: { display: true, text: 'Periode Kuartal' }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Ilustrasi Potensi Pertumbuhan Jaringan & Omzet Awal',
+                                font: { size: 16 }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Chart.js: Sales Projection Chart (Tab 5)
+            const salesCtx = document.getElementById('salesProjectionChart');
+            if (salesCtx) {
+                new Chart(salesCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Tahun 0', 'Tahun 1', 'Tahun 2', 'Tahun 3'],
+                        datasets: [{
+                            label: 'Proyeksi Omzet Tahunan (Miliar Rp)',
+                            data: [0, 2, 7.5, 20], // Data hipotetis (dalam Miliar Rp)
+                            borderColor: 'rgba(225, 29, 72, 1)', // rose-600
+                            backgroundColor: 'rgba(225, 29, 72, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: { display: true, text: 'Omzet (Miliar Rp)' }
+                            },
+                            x: {
+                                title: { display: true, text: 'Tahun Program Berjalan' }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Ilustrasi Proyeksi Pertumbuhan Omzet Kumulatif Tahunan via Reseller',
+                                font: { size: 16 }
+                            }
+                        }
+                    }
+                });
+            }
+
+            showTab('#tab1');
+        });
+    </script>
+</body>
+</html>
